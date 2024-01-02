@@ -1,4 +1,4 @@
-# Letterboxd Node Scraper Project Setup
+# Letterboxd Node Scraper
 
 ## Introduction
 The "Letterboxd Node Scraper" is a project designed to parse and retrieve all the movies watched by a user on the Letterboxd website. To ensure smooth operation, it's essential to configure the environment correctly, starting with the creation of an `.env` file in the project's root directory.
