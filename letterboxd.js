@@ -6,11 +6,6 @@ require("dotenv").config();
 
 const OUTPUT_FILE = "result.json";
 
-if (process.argv.length < 3) {
-  console.error("Error: Please provide a username.");
-  process.exit(1);
-}
-
 let USERNAME = process.argv[2] || "";
 const URL = `https://letterboxd.com/${USERNAME}/films/page/`;
 
