@@ -30,8 +30,8 @@ app.post("/scrape_films", async (req, res) => {
     });
 });
 
-app.listen(port, "0.0.0.0", () => {
+const server = app.listen(port, "0.0.0.0", () => {
   console.log(`Сервер запущен на http://localhost:${port}`);
 });
 
-app.setTimeout(120000);
+server.setTimeout(120000);
