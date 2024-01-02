@@ -11,6 +11,8 @@ app.use(express.json());
 app.post("/scrape_films", async (req, res) => {
   const username = req.body.username;
 
+  console.log("I GET POST");
+
   scrapeFilms(username)
     .then((films) => {
       const updated_at = new Date().toISOString().split("T")[0];
@@ -31,3 +33,5 @@ app.post("/scrape_films", async (req, res) => {
 app.listen(port, "0.0.0.0", () => {
   console.log(`Сервер запущен на http://localhost:${port}`);
 });
+
+app.setTimeout(120000);
