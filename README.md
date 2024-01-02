@@ -6,6 +6,20 @@ The "Letterboxd Node Scraper" is a project designed to parse and retrieve all th
 ## Creating the .env File
 In the root of the Letterboxd Node Scraper project, create a `.env` file to store important environment variables.
 
+## Starting the Application
+
+To start the "Letterboxd Node Scraper" application, use either `yarn` or `npm start`, followed by the username of the Letterboxd account you wish to scrape. Replace `_userName_` with the actual username.
+
+### Using Yarn
+yarn start _userName_
+### Using NPM
+npm start _userName_
+
+Note for Users:
+Replace _userName_ with the actual username of the Letterboxd account.
+Ensure that Node.js and either Yarn or npm are installed on your system.
+Before launching, the application must be configured properly according to the steps below.
+
 ## Configuring the .env File
 Add the following entry to the `.env` file to connect to Rendertron. Please refer to the installation instructions for Rendertron provided at the end of this document:
 - `URL_RENDERTRON=your_rendertron_ip:port`
