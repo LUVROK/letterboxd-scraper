@@ -11,7 +11,7 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 
-const USERNAME = process.argv[2];
+let USERNAME = process.argv[2] || "";
 const URL = `https://letterboxd.com/${USERNAME}/films/page/`;
 
 async function getRenderedPage(url) {
@@ -40,7 +40,9 @@ async function getTotalPages(root) {
   return lastPageLink ? parseInt(lastPageLink.innerText.trim(), 10) : 1;
 }
 
-async function scrapeFilms() {
+async function scrapeFilms(_USERNAME) {
+  if (_USERNAME) USERNAME = _USERNAME;
+
   const root = await fetchPage(1),
     totalPages = await getTotalPages(root),
     films = [];
@@ -82,9 +84,10 @@ scrapeFilms()
     };
 
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(outputData, null, 2));
-
     console.log(`Total films: ${films.length}`);
   })
   .catch((error) => {
     console.error("Error scraping films:", error);
   });
+
+module.exports = { scrapeFilms };
