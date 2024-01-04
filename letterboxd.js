@@ -63,7 +63,7 @@ async function scrapeFilms(_USERNAME) {
         rating = matches ? Number((Number(matches[1]) / 2).toFixed(1)) : null;
       }
 
-      console.log({ filmTitle, year, rating });
+      // console.log({ filmTitle, year, rating });
       films.push({ filmTitle, year, rating });
     });
   }

@@ -12,9 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/scrape_films", async (req, res) => {
   const username = req.body.username;
 
-  console.log("I GET POST");
-  console.log(req.body);
-
   scrapeFilms(username)
     .then((films) => {
       const updated_at = new Date().toISOString().split("T")[0];
