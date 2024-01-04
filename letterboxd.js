@@ -7,7 +7,7 @@ require("dotenv").config();
 const OUTPUT_FILE = "result.json";
 
 let USERNAME = process.argv[2] || "";
-const URL = `https://letterboxd.com/${USERNAME}/films/page/`;
+let URL = `https://letterboxd.com/${USERNAME}/films/page/`;
 
 async function getRenderedPage(url) {
   const rendertronUrl = `http://${process.env.URL_RENDERTRON}/render`;
@@ -23,6 +23,8 @@ async function getRenderedPage(url) {
 }
 
 async function fetchPage(pageNumber) {
+  URL = `https://letterboxd.com/${USERNAME}/films/page/`;
+  console.log(URL + `${pageNumber}/`);
   const text = await getRenderedPage(URL + `${pageNumber}/`);
   return parse(text);
 }
@@ -69,20 +71,20 @@ async function scrapeFilms(_USERNAME) {
   return films;
 }
 
-scrapeFilms()
-  .then((films) => {
-    const updated_at = new Date().toISOString().split("T")[0];
-    const outputData = {
-      updated_at,
-      count: films.length,
-      films,
-    };
+// scrapeFilms()
+//   .then((films) => {
+//     const updated_at = new Date().toISOString().split("T")[0];
+//     const outputData = {
+//       updated_at,
+//       count: films.length,
+//       films,
+//     };
 
-    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(outputData, null, 2));
-    console.log(`Total films: ${films.length}`);
-  })
-  .catch((error) => {
-    console.error("Error scraping films:", error);
-  });
+//     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(outputData, null, 2));
+//     console.log(`Total films: ${films.length}`);
+//   })
+//   .catch((error) => {
+//     console.error("Error scraping films:", error);
+//   });
 
 module.exports = { scrapeFilms };

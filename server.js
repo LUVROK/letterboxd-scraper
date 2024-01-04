@@ -7,11 +7,13 @@ const app = express();
 const port = 8861;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.post("/scrape_films", async (req, res) => {
   const username = req.body.username;
 
   console.log("I GET POST");
+  console.log(req.body);
 
   scrapeFilms(username)
     .then((films) => {
