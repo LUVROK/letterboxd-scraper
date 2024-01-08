@@ -3,6 +3,7 @@ const fs = require("fs");
 const express = require("express");
 const { scrapeFilms } = require("./letterboxd.js");
 const https = require("https");
+const http = require("http");
 
 const app = express();
 const port = 8861;
@@ -41,9 +42,21 @@ const server = app.listen(port, "0.0.0.0", () => {
 
 server.setTimeout(12 * 60 * 1000);
 
-https
-  .createServer(options, (req, res) => {
-    res.writeHead(200);
-    res.end(`Сервер запущен на https://localhost:${8862}`);
-  })
-  .listen(8862);
+// https
+//   .createServer(options, (req, res) => {
+//     res.writeHead(200);
+//     res.end(`Сервер запущен на https://localhost:${8862}`);
+//   })
+//   .listen(8862);
+
+const httpServer = http.createServer(app);
+
+httpServer.listen(port, () => {
+  console.log(`Сервер запущен на http://localhost:${port}`);
+});
+
+const httpsServer = https.createServer(options, app);
+
+httpsServer.listen(8862, () => {
+  console.log(`Сервер запущен на https://localhost:8862`);
+});
