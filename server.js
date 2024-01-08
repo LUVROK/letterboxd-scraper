@@ -36,11 +36,11 @@ app.post("/scrape_films", async (req, res) => {
     });
 });
 
-const server = app.listen(port, "0.0.0.0", () => {
-  console.log(`Сервер запущен на http://localhost:${port}`);
-});
+// const server = app.listen(port, "0.0.0.0", () => {
+//   console.log(`Сервер запущен на http://localhost:${port}`);
+// });
 
-server.setTimeout(12 * 60 * 1000);
+// server.setTimeout(12 * 60 * 1000);
 
 // https
 //   .createServer(options, (req, res) => {
@@ -54,9 +54,11 @@ const httpServer = http.createServer(app);
 httpServer.listen(port, () => {
   console.log(`Сервер запущен на http://localhost:${port}`);
 });
+httpServer.setTimeout(30 * 60 * 1000);
 
 const httpsServer = https.createServer(options, app);
 
 httpsServer.listen(8862, () => {
   console.log(`Сервер запущен на https://localhost:8862`);
 });
+httpsServer.setTimeout(30 * 60 * 1000);
