@@ -1,5 +1,5 @@
 const path = require("path");
-const fs = require("fs").promises;
+const fs = require("fs");
 const express = require("express");
 const { scrapeFilms } = require("./letterboxd.js");
 const https = require("https");
