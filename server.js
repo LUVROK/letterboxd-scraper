@@ -12,8 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const options = {
-  key: fs.readFileSync("../key.pem"),
-  cert: fs.readFileSync("../cert.pem"),
+  key: fs.readFileSync("/path/to/your/private.key"),
+  cert: fs.readFileSync("/path/to/your/certificate.pem"),
 };
 
 app.post("/scrape_films", async (req, res) => {
