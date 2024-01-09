@@ -4,12 +4,14 @@ const express = require("express");
 const { scrapeFilms } = require("./letterboxd.js");
 const https = require("https");
 const http = require("http");
+const cors = require("cors");
 
 const app = express();
 const port = 8861;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 const options = {
   key: fs.readFileSync("/etc/letsencrypt/live/letterboxd-plus.com/privkey.pem"),
