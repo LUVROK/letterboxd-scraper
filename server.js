@@ -6,15 +6,15 @@ const https = require("https");
 const http = require("http");
 
 const app = express();
-const port = 8861;
+const port = 8862;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const options = {
-  key: fs.readFileSync("/path/to/your/private.key"),
-  cert: fs.readFileSync("/path/to/your/certificate.pem"),
-};
+// const options = {
+//   key: fs.readFileSync("/etc/nginx/sites-available/private.pem"),
+//   cert: fs.readFileSync("/etc/nginx/sites-available/origin.pem"),
+// };
 
 app.post("/scrape_films", async (req, res) => {
   const username = req.body.username;
@@ -56,9 +56,9 @@ httpServer.listen(port, () => {
 });
 httpServer.setTimeout(30 * 60 * 1000);
 
-const httpsServer = https.createServer(options, app);
+// const httpsServer = https.createServer(options, app);
 
-httpsServer.listen(8862, () => {
-  console.log(`Сервер запущен на https://localhost:8862`);
-});
-httpsServer.setTimeout(30 * 60 * 1000);
+// httpsServer.listen(8862, () => {
+//   console.log(`Сервер запущен на https://localhost:8862`);
+// });
+// httpsServer.setTimeout(30 * 60 * 1000);
